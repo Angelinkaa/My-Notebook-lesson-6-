@@ -19,12 +19,7 @@ public class NoteHolder extends RecyclerView.ViewHolder {
         super(itemView);
         title = itemView.findViewById(R.id.note_title);
         description = itemView.findViewById(R.id.note_description);
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+        itemView.setOnClickListener(v -> listener.onNoteClick(note));
     }
 
     void bind(Note note)

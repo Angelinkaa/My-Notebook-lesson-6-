@@ -4,13 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.sharedpreferences2.R;
 import com.sharedpreferences2.data.Note;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +17,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NoteHolder> {
 
     public void setNotes(List<Note> notes){
         this.notes = notes;
+        notifyDataSetChanged();
     }
 
     public interface OnNoteClickListener{
@@ -39,7 +37,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NoteHolder> {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.note_item, parent, false);
-        return new NoteHolder(view);
+        return new NoteHolder(view, listener);
     }
 
     @Override

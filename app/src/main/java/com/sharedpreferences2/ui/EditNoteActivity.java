@@ -4,14 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.sharedpreferences2.R;
-import com.sharedpreferences2.data.InMemoryRepoImpl;
+import com.sharedpreferences2.data.Constants;
 import com.sharedpreferences2.data.Note;
-import com.sharedpreferences2.data.Repo;
 
 public class EditNoteActivity extends AppCompatActivity {
 
@@ -33,16 +30,15 @@ public class EditNoteActivity extends AppCompatActivity {
         saveNote = findViewById(R.id.edit_note_update);
 
         Intent intent = getIntent();
-//        if (intent != null && intent.hasExtra(NotesListActivity.NOTE_NEW)) {
-//            Note note = (Note) intent.getSerializableExtra(Constants.NOTE);
-//            id = note.getId();
-//            title.setText(note.getTitle());
-//            description.setText(note.getDescription());
-//        }
-//        //
-//        else {
-//            note = new Note("", "");
-//        }
+        if (intent != null && intent.hasExtra(NotesListActivity.NOTE_NEW)) {
+            Note note = (Note) intent.getSerializableExtra(Constants.NOTE);
+            id = note.getId();
+            title.setText(note.getTitle());
+            description.setText(note.getDescription());
+        }
+        else {
+            note = new Note("", "");
+        }
 //
 //        title.setText(note.getTitle());
 //        description.setText(note.getDescription());
